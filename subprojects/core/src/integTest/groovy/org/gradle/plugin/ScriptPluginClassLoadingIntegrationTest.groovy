@@ -17,6 +17,7 @@
 package org.gradle.plugin
 
 import org.gradle.integtests.fixtures.AbstractIntegrationSpec
+import org.gradle.integtests.fixtures.ToBeFixedForInstantExecution
 import org.gradle.test.fixtures.plugin.PluginBuilder
 import spock.lang.Issue
 
@@ -197,6 +198,7 @@ class ScriptPluginClassLoadingIntegrationTest extends AbstractIntegrationSpec {
         failure.assertThatCause(containsText("unable to resolve class Foo"))
     }
 
+    @ToBeFixedForInstantExecution(because = "plugin-dev & publishing")
     def "script plugin buildscript does not affect client"() {
         given:
         def jar = file("plugin.jar")
@@ -247,6 +249,7 @@ class ScriptPluginClassLoadingIntegrationTest extends AbstractIntegrationSpec {
         output.contains "not in sub"
     }
 
+    @ToBeFixedForInstantExecution(because = "plugin-dev & publishing")
     def "script plugin cannot access classes added by buildscript in applying script"() {
         given:
         def jar = file("plugin.jar")
@@ -282,6 +285,7 @@ class ScriptPluginClassLoadingIntegrationTest extends AbstractIntegrationSpec {
         output.contains "not in script"
     }
 
+    @ToBeFixedForInstantExecution(because = "plugin-dev & publishing")
     def "second level script plugin cannot access classes added by buildscript in applying script"() {
         given:
         def jar = file("plugin.jar")
@@ -321,6 +325,7 @@ class ScriptPluginClassLoadingIntegrationTest extends AbstractIntegrationSpec {
         output.contains "not in script"
     }
 
+    @ToBeFixedForInstantExecution(because = "plugin-dev & publishing")
     def "Can apply a script plugin to the buildscript block"() {
         given:
         def jar = file("plugin.jar")
